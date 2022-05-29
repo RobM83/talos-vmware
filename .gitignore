@@ -5,3 +5,6 @@
 *.ova
 *.hcl
 .terraform
+config/controlplane.yaml
+config/worker.yaml
+config/talosconfig
