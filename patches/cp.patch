@@ -1,0 +1,23 @@
+- op: add
+  path: /machine/network
+  value:
+    interfaces:
+    - interface: eth0
+      dhcp: false
+      vip:
+        ip: ${VIPADDRESS}
+      addresses: 
+        - ${IPADDRESS}
+      routes:
+        - network: 0.0.0.0/0
+          gateway: ${GATEWAY}
+- op: replace #VMware Tools
+  path: /cluster/extraManifests
+  value:
+    - "https://raw.githubusercontent.com/mologie/talos-vmtoolsd/master/deploy/unstable.yaml"
+- op: replace #Cilium CNI
+  path: /cluster/network/cni
+  value:
+    name: "custom"
+    urls:
+      - "https://gist.githubusercontent.com/nberlee/74b9ddafc6d92b4f3fed9b10349981e8/raw/0b6ac899e098c83fb9b00016cae32d53c2f0e0b3/cilium-home.yaml"

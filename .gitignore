@@ -1,0 +1,7 @@
+*.tfvars
+*.plan
+*.tfstate
+*.tfstate.backup
+*.ova
+*.hcl
+.terraform

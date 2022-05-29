@@ -1,0 +1,11 @@
+- op: add
+  path: /machine/network
+  value:
+    interfaces:
+    - interface: eth0
+      dhcp: false
+      addresses: 
+        - ${IPADDRESS}
+      routes:
+        - network: 0.0.0.0/0
+          gateway: ${GATEWAY}
