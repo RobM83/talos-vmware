@@ -1,8 +1,9 @@
 # Talos on VMware
 
 - Download Talos ova for VMware (`./image/`)
-- Create Helm template Cilium (`./cilium/`)
-  - Push this template to git and adjust url in `./config/cp.patch`.
+- Adjust `values.yaml` and `cm-bgp-config.yaml` in `./cilium/`
+  - Create CNI config `./cilium/gen-cni.sh`
+  - Update the gist and adjust the url in `./config/cp.patch` if changed.
 - edit `genconfig.sh` (VIP and Port) and run it.
 - Run terraform to deploy control plane and worker nodes
 - Initiate the control-cluster

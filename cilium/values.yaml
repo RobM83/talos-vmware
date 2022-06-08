@@ -1,0 +1,68 @@
+cni:
+  exclusive: false
+
+image:
+   pullPolicy: IfNotPresent
+
+autoDirectNodeRoutes: true
+
+bgp:
+  enabled: true
+  announce:
+     loadbalancerIP: true
+     podCIDR: true
+
+bpf:
+   masquerade: false
+#   vlanBypass: [0]
+
+enableXTSocketFallback: false
+
+# BPF host routing is currently not supported with enable-endpoint-routes. Falling back to legacy host routing (enable-host-legacy-routing=true).
+# not needed according to: https://docs.cilium.io/en/v1.11/concepts/networking/routing/#id3
+endpointRoutes:
+   enabled: false
+
+externalIPs:
+  enabled: true
+
+fragmentTracking: true
+
+relay:
+   enabled: true
+
+# ipv6:
+#   enabled: true
+
+ipam:
+   mode: kubernetes
+   operator:
+      clusterPoolIPv4PodCIDR: "10.24.0.0/16"
+      clusterPoolIPv4MaskSize: 24
+      # clusterPoolIPv6PodCIDR: "2a10:3781:298:9000::/52"
+      # clusterPoolIPv6MaskSize: 64
+
+installIptablesRules: false
+installNoConntrackIptablesRules: true
+
+l7Proxy: false
+      
+enableIPv4Masquerade: false
+# enableIPv6Masquerade: false
+
+k8sServiceHost: 10.42.12.100
+k8sServicePort: 6443
+
+kubeProxyReplacement: strict
+
+loadBalancer:
+  mode: dsr
+  acceleration: disabled
+#  algorithm: maglev
+
+ipv4NativeRoutingCIDR: 0.0.0.0/0
+
+nodePort:
+   enabled: true
+
+tunnel: "disabled"

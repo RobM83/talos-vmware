@@ -15,9 +15,13 @@
   path: /cluster/extraManifests
   value:
     - "https://raw.githubusercontent.com/mologie/talos-vmtoolsd/master/deploy/unstable.yaml"
+- op: replace #Disable kube proxy
+  path: /cluster/proxy
+  value: 
+     disabled: true    
 - op: replace #Cilium CNI
   path: /cluster/network/cni
   value:
     name: "custom"
     urls:
-      - "https://github.com/RobM83/talos-vmware/blob/9aa5f55677067c1e02abd4704311e13629df3403/cilium/cilium.yaml"
+      - "https://gist.githubusercontent.com/Robm83/fc048a737f0f1c92670f0b620d334223/raw/cilium.yaml"
